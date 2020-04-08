@@ -20,10 +20,10 @@ const db = knex({
 app.use(bodyParser.json())
 app.use(cors())
 app.get('/', (req, res) => { res.send('it is working') })
-app.post("/signin", signIn.handleSignin(db, bcrypt))
-app.get("/profile/:id", (req, res, db) => { profile.getProfile(req, res, db) })
-app.put("/image", (req, res) => { image.handleImage(req, res, db) })
-app.post("/register", (req, res) => { register.handleRegister(req, res, db, bcrypt) })
+app.post('/signin', signIn.handleSignin(db, bcrypt))
+app.get('/profile/:id', (req, res, db) => { profile.getProfile(req, res, db) })
+app.put('/image,'(req, res) => { image.handleImage(req, res, db) })
+app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) })
 app.post('/imageurl', (req, res) => { image.handleAPI(req, res) })
 
 const PORT = process.env.PORT
