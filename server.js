@@ -29,6 +29,7 @@ app.post('/imageurl', (req, res) => { image.handleAPI(req, res) })
 const PORT = process.env.PORT
 app.listen(PORT || 3000, () => {
     console.log(`App is running on port ${PORT}`);
+    console.log(process.env.DATABASE_URL)
 })
 
 
