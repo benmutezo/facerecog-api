@@ -8,29 +8,24 @@ const handleRegister = (req, res, db, bcrypt) => {
         trx.insert({
             hash: hash,
             email: email
-        }).catch(err => res.status(400).json(err))
+        })
             .into('login')
-            .catch(err => res.status(400).json(err))
             .returning('email')
-            .catch(err => res.status(400).json(err))
             .then(loginEmail => {
                 return trx('users')
                     .returning('*')
-                    .catch(err => res.status(400).json(err))
                     .insert({
                         email: loginEmail[0],
                         name: name,
                         joined: new Date()
-                    })
-                    .catch(err => res.status(400).json(err))
-                    .then(user => {
+                    }).then(user => {
                         res.json(user[0])
-                    }).catch(err => res.status(400).json(err))
+                    })
             })
             .then(trx.commit)
             .catch(trx.rollback)
     })
-        // .catch(err => res.status(400).json(err))
+        .catch(err => res.status(400).json(err))
 }
 
 module.exports = {
