@@ -13,7 +13,7 @@ const image = require('./controlers/image')
 const db = knex({
     client: 'pg',
     connection: {
-        host: 'postgresql-pointy-81575)',
+        host: process.env.DATABASE_URL,
         ssl: true,
     }
 });
